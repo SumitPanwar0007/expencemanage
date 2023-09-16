@@ -4,8 +4,8 @@ import moment from 'moment';
 
 const Dashboard = () => {
     const {
-            allTransaction,setAllTransaction,
-            frequency,setFrequency,
+            allTransaction,
+            setFrequency,
             
            
       } = useAppContext();
@@ -16,7 +16,7 @@ const Dashboard = () => {
                 .filter((transaction)=>transaction.type==='income') 
     const allExpenseTransection=allTransaction
                 .filter((transaction)=>transaction.type==="expense")
-                console.log("all expanse are :: ",allExpenseTransection)
+               
 
   const totalIncome=allTransaction
   .filter((transection)=> transection.type ==="income")
@@ -32,7 +32,7 @@ const Dashboard = () => {
  if (allIncomeTransection.length > 0) {
      minIncome = Math.min(...allIncomeTransection.map((transaction) => transaction.amount));
      maxIncome=Math.max(...allIncomeTransection.map((transaction)=>transaction.amount));
-    console.log('Minimum Income:', minIncome);
+    
   } else {
     console.log('No income transactions found.');
   }
@@ -51,7 +51,7 @@ const Dashboard = () => {
  
       <div className="w-full flex flex-col md:flex-row justify-between items-center">
 
-        <div className="w-10/12 md:w-1/2  flex flex-col bg-[#484899]/[0.6]  rounded-lg m-4 py-8 gap-8  shadow-lg shadow-slate-600">
+        <div className="w-10/12 md:w-1/2  flex flex-col bg-gradient-to-tr from-blue-800 to-indigo-400 backdrop-blur-3xl rounded-lg m-4 py-8 gap-8  shadow-lg shadow-slate-600">
            <h1 className='w-full text-center text-2xl font-bold sm:text-3xl'>Status</h1>
             
             <div className="w-2/3 h-auto text-center text-white/[0.6]  bg-[#262651] shadow-lg rounded-lg p-2 mx-auto">
@@ -70,7 +70,7 @@ const Dashboard = () => {
 
 
 
-        <div className="w-10/12  flex flex-col items-center bg-[#484899]/[0.6] m-4 rounded-lg p-2 gap-4 shadow-lg shadow-slate-600">
+        <div className="w-10/12 py-4 flex flex-col items-center bg-gradient-to-tr from-blue-800 to-indigo-400 backdrop-blur-3xl m-4 rounded-lg p-2 gap-4 shadow-lg shadow-slate-600  ">
         <h1  className='w-full text-center font-bold text-2xl sm:text-3xl pb-4'>Recent Histroy</h1>
         
           {

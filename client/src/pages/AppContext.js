@@ -1,7 +1,7 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { createContext,useContext,useState } from "react";
-import { Form, Input, Modal, Select, Table, message } from 'antd';
+
 
 
 const AppContext= createContext();
@@ -25,6 +25,7 @@ export const AppContextProvider=({children})=>{
   const [activeButton, setActiveButton] = useState('Layout');
   const [menu, setMenu]= useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [totalPage,setTotalPage]=useState(1);
 
 
     const [columns, setColumns] = useState([
@@ -32,10 +33,12 @@ export const AppContextProvider=({children})=>{
           title: 'Date',
           dataIndex: 'date',
           render: (text) => <span>{moment(text).format('YYYY-MM-DD')}</span>,
+          
         },
         {
           title: 'Amount',  
           dataIndex: 'amount',
+         
         },
         {
           title: 'Type',
@@ -43,14 +46,17 @@ export const AppContextProvider=({children})=>{
           render: (text,record) => (
             <div style={{ color:record.type === 'expense'? 'red':'green' }}>{text}</div>
           ),
+        
         },
         {
           title: 'Category',
           dataIndex: 'category',
+          responsive:['sm'],
         },
         {
           title: 'Description',
           dataIndex: 'description',
+          responsive:['sm'],
         },
         {
           title: 'Actions',
@@ -90,7 +96,8 @@ export const AppContextProvider=({children})=>{
         layout,setLayout,
         activeButton, setActiveButton,
         menu, setMenu,
-        isSidebarOpen, setSidebarOpen
+        isSidebarOpen, setSidebarOpen,
+        totalPage,setTotalPage
     }
 
 return (

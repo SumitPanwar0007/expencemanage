@@ -14,25 +14,18 @@ const { RangePicker } = DatePicker;
 
 const Layout = ({children}) => {
   const {
-    showModal,
-    setShowModal,
-    loading,
-    setLoading,
-    allTransaction,
-    setAllTransaction,
-    frequency,
-    setFrequency,
-    selectDate,
-    setSelectDate,
-    type,
-    setType,
+    showModal,setShowModal,
+    loading,setLoading,
+    allTransaction,setAllTransaction,
+    frequency,setFrequency,
+    selectDate,  setSelectDate,
+    type, setType,
     viewData,
-    setViewData,
-    editable,
-    setEditable,
-    columns, 
-    setColumns, 
+    editable,  setEditable,
+    columns,
+   
   } = useAppContext();
+
    // Get all transactions
    useEffect(() => {
     const getAllTransaction = async () => {
@@ -47,7 +40,7 @@ const Layout = ({children}) => {
         });
         setLoading(false);
         setAllTransaction(res.data);
-        console.log(res.data);
+        
       } catch (error) {
         console.log(error);
         message.error('Fetch Issue with Transection');
@@ -112,20 +105,39 @@ const Layout = ({children}) => {
     backgroundColor:'#a4478a9',
 
   }
-  
+
+  // const fetchRecords = (page, pageSize) => {
+  //   setLoading(true);
+  //   axios
+  //     .get(`https://api.instantwebtools.net/v1/passenger?page=${page}&size=${pageSize}`)
+  //     .then((res) => {
+  //       setDataSource(res.data.data);
+  //       setTotalPassengers(res.data.totalPassengers);
+  //       setLoading(false);
+  //     });
+  // };
+  // useEffect(() => {
+  //   fetchRecords(1, 6);
+  // }, []);
+  // {{
+  //   // total: totalPage  ,
+  //   // onChange: (page, pageSize) => {
+  //   //   fetchRecords(page, pageSize);
+  //   // },
+  // }} 
 
   return (
    <>
   
    
    {loading && <Spinner />}
-      <div className='filters mx-4 mt-6 bg-[#262651] text-white text-sm sm:text-base text-center'>
-        <div >
-          <h6>Select Frequency</h6>
-          <Select value={frequency} onChange={(value) => setFrequency(value)} dropdownStyle={{ backgroundColor: '#9191d2' }} >
-            <Select.Option value='7' >Last week</Select.Option>
-            <Select.Option value='30'>Last month</Select.Option>
-            <Select.Option value='365'>Last year</Select.Option>
+      <div className='filters mx-4 mt-6 bg-gradient-to-r from-blue-800 to-indigo-500 text-white text-sm sm:text-base text-center '>
+        <div className=''>
+          <h6 className='text-xs sm:text-base'>Select Frequency</h6>
+          <Select value={frequency} style={{minWidth:'10vw', maxWidth:'20vw'}} onChange={(value) => setFrequency(value)} dropdownStyle={{ backgroundColor: '#9191d2' }} >
+            <Select.Option value='7' >Week</Select.Option>
+            <Select.Option value='30'>Month</Select.Option>
+            <Select.Option value='365'>Year</Select.Option>
             <Select.Option value='custom'>Custom</Select.Option>
           </Select>
           {frequency === 'custom' && (
@@ -137,8 +149,8 @@ const Layout = ({children}) => {
         </div>
 
         <div>
-          <h6>Type</h6>
-          <Select value={type} onChange={(value) => setType(value)} style={{width:80}} dropdownStyle={{ backgroundColor: '#9191d2' }} >
+          <h6 className='text-xs sm:text-base'>Type</h6>
+          <Select value={type} style={{minWidth:'10vw', maxWidth:'20vw'}} onChange={(value) => setType(value)}  dropdownStyle={{ backgroundColor: '#9191d2' }} >
             <Select.Option value='all' >All</Select.Option>
             <Select.Option value='income'>Income</Select.Option>
             <Select.Option value='expense'>Expense</Select.Option>
@@ -147,17 +159,17 @@ const Layout = ({children}) => {
 
         <div>
           <button
-            className=' bg-[#B24C7D]  text-white text-sm sm:text-base sm:font-bold py-2 px-2 sm:px-4 rounded'
+            className=' bg-[#B24C7D]  text-white text-xs sm:text-base sm:font-bold py-2 px-2 sm:px-4 rounded w-[15vw] sm:w-16'
             onClick={() => setShowModal(true)}
           >
-            Add New
+            Add 
           </button>
         </div>
       </div>
 
-      <div className='content'>
+      <div className='content   '>
         {viewData === 'table' ? (
-          <Table columns={columns} dataSource={allTransaction} style={tableStyle} />
+          <Table columns={columns} dataSource={allTransaction} style={tableStyle} pagination={true} />
         ) : (
           <Analytics allTransection={allTransaction} />
 

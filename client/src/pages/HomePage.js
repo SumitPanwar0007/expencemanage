@@ -2,8 +2,6 @@ import React from 'react';
 import Layout from '../components/Layout';
 
 
-import { DatePicker } from 'antd';
-
 import { useAppContext } from './AppContext';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
@@ -13,30 +11,32 @@ import Dashboard from '../components/layout/Dashboard';
 import Expense from '../components/Expense';
 import Income from '../components/Income';
 
-const { RangePicker } = DatePicker;
+
+
 
 const HomePage = () => {
  
     const {
-      menu, setMenu,
-      activeButton, setActiveButton
+     
+      activeButton,
     } = useAppContext();
 
  
  
 
   return (<> 
-  <div className="flex flex-col ">
-    <div className="">
+  <div className="  flex flex-col bg-gradient-to-br from-rose-200 via-fuchsia-200 to-sky-200 backdrop-blur-xl overflow-hidden">
+
+    <div className="fixed overflow-y-auto z-50 top-0 left-0 w-full">
     <Header/>
       </div> 
    
-   <div className="flex justify-start w-full bg-[#9191d2]/[.5] ">
-   <div className='sm:w-[25%] '>
+   <div className="sm:flex justify-start w-full ">
+   <div className='w-[20%] z-10 '>
    <Sidebar /> 
     
    </div>
-   <div className='  content w-full border-2 border-inherit rounded-lg m-2 '>
+   <div className='content border-2 border-inherit rounded-lg m-2 w-full'>
    
         {activeButton === 'Dashboard' && <Dashboard />}
         {activeButton === 'Layout' && <Layout />}

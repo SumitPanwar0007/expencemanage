@@ -1,15 +1,15 @@
-import React, { useEffect} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { message } from 'antd';
+import React, { } from 'react';
+import { Link } from 'react-router-dom';
+
 import {useAppContext} from '../../pages/AppContext'
 import burger from '../../images/burger.png'
 
 
 const Header = () => {
-  const navigate = useNavigate();
+
  
       const {
-            loginUser, setLoginUser,
+            loginUser, 
             menu, setMenu
         } = useAppContext();
 
@@ -19,14 +19,14 @@ const Header = () => {
  
 
   return (
-    <nav className="bg-[#9191d2]/[.5] p-2  ">
-      <div className="w-full fixed sm:static mx-auto  bg-[#262651]  sm:bg-inherit px-2 sm:rounded-lg text-white z-50 top-0 left-0 items-center flex justify-between sm:text-blue-800 ">
+
+      <div className="  bg-[#9191d2]/[.5] backdrop-blur-lg p-2  w-full mx-auto  px-2 sm:rounded-lg text-white items-center flex justify-between sm:text-blue-800 ">
   
       <img src={burger} alt=""  className='w-10 cursor-pointer  sm:hidden' onClick={handleMenu}/>
         <Link to="/" className="text-2xl font-bold ">
-           ManageKro
+          BudgetBuddy
         </Link>
-        <ul className="flex items-center space-x-4 ">
+        <ul className="flex items-center space-x-4 font-bold ">
           <li>
             {loginUser && <span className="">{loginUser.name}</span>}
           </li>
@@ -35,7 +35,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-    </nav>
+   
   );
 };
 

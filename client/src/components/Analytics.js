@@ -43,18 +43,18 @@ const totalTransection= allTransection.length;
 
   return (
     <> 
-     <div className='grid sm:grid-cols-4 '>
+     <div className='grid sm:grid-cols-2 md:grid-cols-4'>
        
     
 
      
         <div className="mt-4 px-2">
-            <div className=" bg-[#484899]/[0.6] shadow-slate-300 shadow-lg text-center rounded-lg">
-                <div className='text-2xl py-2 bg-[#262651] mb-6 rounded-t-lg text-center text-white/[0.6]'>
+            <div className=" bg-[#484899]/[0.2] shadow-slate-300 shadow-lg text-center rounded-lg">
+                <div className='bg-[#9191d2]/[.8] text-2xl py-2 font-bold mb-6 rounded-t-lg text-center  backdrop-blur-xl'>
                     Total 
-                     Transection: <br />{totalTransection}
+                     Transection: <br /> <span className='text-blue-900'>{totalTransection} </span>
                 </div>
-                <div className="text-xl">
+                <div className="text-xl backdrop-blur-xl">
                     <h3 className='text-[#166534] '>Income: ₹ {totalIncomeTransection.length}</h3>
                     <h3 className='text-[#991b1b]'>Expense: ₹ {totalExpenceTransection.length}</h3>
                     <div className='gap-4'>
@@ -77,9 +77,9 @@ const totalTransection= allTransection.length;
         </div>
 
         <div className="mt-4 px-2">
-            <div className=" bg-[#484899]/[0.6] shadow-slate-300 shadow-lg text-white/[0.6] rounded-lg text-center">
-                <div className='text-2xl py-2 bg-[#262651]  mb-6 rounded-t-lg text-center'>
-                    Total Turnover: <br /> {totalTurnover}
+            <div className=" bg-[#484899]/[0.2] shadow-slate-300 shadow-lg text-white/[0.6] rounded-lg text-center">
+                <div className='text-2xl py-2 bg-[#9191d2]/[0.8] text-black font-bold  mb-6 rounded-t-lg text-center'>
+                    Total Turnover: <br /> <span className='text-blue-900'> {totalTurnover} </span>
                 </div>
                 <div className="text-xl">
                     <h3 className='text-[#166534]'>Income:  ₹ {totalIncomeTurnover}</h3>
@@ -104,8 +104,8 @@ const totalTransection= allTransection.length;
         </div>
 
     
-         <div className="mt-4 m-2 rounded-lg shadow-slate-300 shadow-lg  bg-[#484899]/[0.6] text-white/[0.6]">
-            <h4 className='text-2xl py-2 bg-[#262651]  mb-6 rounded-t-lg text-center'>Categorywise <br /> Income</h4>
+         <div className="mt-4 m-2 rounded-lg shadow-slate-300 shadow-lg  bg-[#484899]/[0.2] text-white/[0.6]">
+            <h4 className='text-2xl py-2 bg-[#9191d2]/[0.8] text-black font-bold  mb-6 rounded-t-lg text-center'>Categorywise <br /> Income</h4>
 
             {categories.map((category)=>{
 
@@ -117,7 +117,7 @@ const totalTransection= allTransection.length;
                             return(
                                 amount>0 &&(
                                 <div className=" p-2">
-                                    <div className="card-body">
+                                    <div className="text-black">
                                         <h4>{category}</h4>
                                         <Progress    
                                         strokeColor={'#166534'}
@@ -127,8 +127,8 @@ const totalTransection= allTransection.length;
                             )) 
             })}
             </div>
-            <div className="mt-4 m-2 rounded-lg shadow-slate-300 shadow-lg  bg-[#484899]/[0.6] text-white/[0.6]">
-            <h4 className='text-2xl py-2 bg-[#262651]  mb-6 rounded-t-lg text-center'>Categorywise <br /> expense</h4>
+            <div className="mt-4 m-2 rounded-lg shadow-slate-300 shadow-lg  bg-[#484899]/[0.2] text-white/[0.6]">
+            <h4 className='text-2xl py-2 bg-[#9191d2]/[0.8] text-black font-bold  mb-6 rounded-t-lg text-center'>Categorywise <br /> expense</h4>
 
             {categories.map((category)=>{
 
@@ -140,7 +140,7 @@ const totalTransection= allTransection.length;
                             return(
                                 amount>0 &&(
                                 <div className="p-2">
-                                    <div className="card-body">
+                                    <div className="text-black">
                                         <h4>{category}</h4>
                                         <Progress   
                                                      strokeColor={'#991b1b'}
