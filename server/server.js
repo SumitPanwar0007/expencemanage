@@ -5,6 +5,7 @@ const cors= require('cors');
 const connectDb = require('./Config/connectDb');
 const userRoutes = require('./routes/userRoutes')
 const userTransection=require('./routes/transectionRoutes')
+const port=require('port');
 
 
 //configure the env file
@@ -27,6 +28,16 @@ app.use("/users",userRoutes);
 
 // transection routes
 app.use("/transection",userTransection)
+
+//static files
+app.use(express.static(path.join(__dirname),"./client/build"));
+
+app.get("*",function(req,res){
+    res.sendFile(path.join(__dirname,"./client/build/index.html"));
+});
+
+
+
 //portss
 const PORT =  process.env.PORT ||8081
 
