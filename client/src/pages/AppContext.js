@@ -27,6 +27,21 @@ export const AppContextProvider=({children})=>{
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [totalPage,setTotalPage]=useState(1);
 
+// Delete handler
+   const handleDelete = async (record) => {
+    try {
+      setLoading(true);
+      await axios.post('/transection/delete-transection', {
+        transectionId: record._id,
+      });
+      setLoading(false);
+      message.success('Transection Deleted!');
+    } catch(error) {
+      setLoading(false);
+      console.log(error);
+      message.error('Unable to Delete');
+    }
+  };
 
     const [columns, setColumns] = useState([
         {
@@ -72,7 +87,7 @@ export const AppContextProvider=({children})=>{
               <DeleteOutlined
                 className='mx-2 color-red-300'
                 onClick={() => {
-                //   handleDelete(record);
+            handleDelete(record);
                 }}
               />
             </div>
