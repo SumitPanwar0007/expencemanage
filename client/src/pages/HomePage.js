@@ -25,32 +25,33 @@ const HomePage = () => {
  
 
   return (<> 
-  <div className="  flex flex-col bg-gradient-to-br from-rose-200 via-fuchsia-200 to-sky-200 backdrop-blur-xl overflow-hidden">
+ 
+    <div className=" fixed sm:relative top-0 w-full  z-50  left-0">
+          <Header />
+        </div>
+      <div className="flex flex-row w-full h-full bg-gradient-to-br from-rose-200 via-fuchsia-200 to-sky-200 backdrop-blur-xl">
 
-    <div className="fixed overflow-y-auto z-50 top-0 left-0 w-full">
-    <Header/>
-      </div> 
-   
-   <div className="sm:flex justify-start w-full ">
-   <div className='w-[20%] z-10 '>
-   <Sidebar /> 
-    
-   </div>
-   <div className='content border-2 border-inherit rounded-lg m-2 w-full'>
-   
-        {activeButton === 'Dashboard' && <Dashboard />}
-        {activeButton === 'Layout' && <Layout />}
-        {activeButton === 'Income' && <Income />}
-        {activeButton === 'Expense' && <Expense />}
-        {/* {activeButton === 'Chart' && <Chart />} */}
-        {/* {activeButton === 'Transaction' && <Transaction />} */}
-  
-     
-   </div>
-    </div>
+      <div className="sm:w-[20vw]  h-screen mx-1 mt-1">
+      <Sidebar />
+      </div>
 
-    <Footer/>
-    </div>
+       
+      <div className="translate-y-14 sm:translate-y-0 w-full flex flex-col ">
+      
+
+        <div className="sm:flex justify-start w-full ">
+          <div className="content border-2 border-inherit rounded-lg m-2 w-full">
+            {activeButton === "Dashboard" && <Dashboard />}
+            {activeButton === "Layout" && <Layout />}
+            {activeButton === "Income" && <Income />}
+            {activeButton === "Expense" && <Expense />}
+            
+          </div>
+        </div>
+
+        <Footer />
+      </div>
+      </div>
     </>
  
   );
