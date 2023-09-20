@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.8.5",
     "axios": "^1.5.0",
+    "concurrently": "^8.2.1",
     "datepicker": "^0.0.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
@@ -23,9 +24,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+   "server":"nodemon server.js",
+  "dev":"concurrently \"npm run server\" \"npm run client\" ",
+   "client":"npm start --prefix client"
   },
   "eslintConfig": {
     "extends": [
