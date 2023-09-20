@@ -60,8 +60,11 @@ const handleButtonClick = (buttonName) => {
 
 
   return (
-    <div  className={menu ? 'my-0  px-2 fixed bg-gradient-to-r from-blue-800 to-indigo-500 text-white  flex flex-col justify-center gap-4  transition duration-100 z-10'
-                          :' bg-gradient-to-r from-blue-800 to-indigo-500 text-white px-2 text-center rounded-lg mx-auto py-2  hidden sm:block w-[90%] h-screen transition duration-250 my-2 '  }>
+    <div className={
+          menu
+            ? "fixed z-10 top-0 translate-y-14 my-0 h-screen  px-2  bg-gradient-to-r from-blue-800 to-indigo-500 text-white  flex flex-col justify-center gap-4  transition duration-100 "
+            : "  hidden sm:block w-full h-screen bg-gradient-to-r from-blue-800 to-indigo-500 text-white px-4 text-center rounded-lg  py-2  transition duration-250 "
+        }>
    
       <div className=' mt-4'>
         <img src={'https://picsum.photos/id/237/200/300'} alt="" className=' sm:w-12 sm:h-16  md:w-20 rounded-full h-20 mx-auto'/>
